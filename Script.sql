@@ -1,11 +1,11 @@
-DROP TABLE IF EXISTS artist_album CASCADE;
+
 DROP TABLE IF EXISTS playlists CASCADE;
 DROP TABLE IF EXISTS tracks CASCADE;
 DROP TABLE IF EXISTS albums CASCADE;
 DROP TABLE IF EXISTS artists CASCADE;
 DROP TABLE IF EXISTS genres CASCADE;
 DROP TABLE IF EXISTS playlists_track CASCADE;
-DROP TABLE IF EXISTS artist_genre CASCADE;
+
 
 CREATE TABLE genres (
     id INT PRIMARY KEY,
@@ -28,29 +28,10 @@ CREATE TABLE albums (
     FOREIGN KEY (artist_id) REFERENCES artists(id)
 );
 
-
-CREATE TABLE artist_album (
-    artist_id INT,
-    album_id INT,
-    FOREIGN KEY (artist_id) REFERENCES artists(id),
-    FOREIGN KEY (album_id) REFERENCES albums(id),
-    PRIMARY KEY (artist_id, album_id)
-);
-
-CREATE TABLE artist_genre (
-    artist_id INT,
-    genre_id INT,
-    FOREIGN KEY (artist_id) REFERENCES artists(id),
-    FOREIGN KEY (genre_id) REFERENCES genre(id),
-    PRIMARY KEY (artist_id, genre_id)
-);
-
-
-
 CREATE TABLE tracks (
     id INT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    duration DECIMAL,
+    duration INT,
     album_id INT,
     FOREIGN KEY (album_id) REFERENCES albums(id)
 );
