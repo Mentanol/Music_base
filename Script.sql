@@ -46,7 +46,7 @@ CREATE TABLE artist_genre (
 CREATE TABLE tracks (
     id INT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    duration DECIMAL,
+    duration INT,
     album_id INT,
     FOREIGN KEY (album_id) REFERENCES albums(id)
 );
